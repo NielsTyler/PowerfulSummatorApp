@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SumCalculator.Application.SumAlgorighms
 {
-    public class EvenNumbersSumCalculator : IIntSumCalculator
+    public class FilteredNumbersSumCalculator : IIntSumCalculator
     {
-        public int Sum(int[] array)
+        public long Sum(IEnumerable<long> array)
         {
             return array.Where(a => (a % 2) == 0).Sum();
         }

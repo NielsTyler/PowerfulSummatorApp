@@ -30,7 +30,7 @@ namespace SumCalculatorConsole
                 string pathToFile = Path.Combine(PATH, DATA_FILE_NAME);
                 var app = serviceProvider.GetService<SumCalculatorApp>();
 
-                int result = app.Run(pathToFile);
+                long result = app.Run(pathToFile);
 
                 Console.WriteLine($"Sum of numbers: {result}");
             }

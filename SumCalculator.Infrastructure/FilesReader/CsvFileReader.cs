@@ -1,20 +1,21 @@
 ﻿using SumCalculator.Application.Exceptions;
 using SumCalculator.Application.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace SumCalculator.Infrastructure.FilesReader
 {
     public class CsvFileReader: INumbersDataReader
     {
-        private readonly ArraysConverter _converter;
+        readonly ArraysConverter _converter;
 
         public CsvFileReader(ArraysConverter converter)
         {
             _converter = converter;
         }               
 
-        private string[] ReadLine(string path)
+        string[] ReadLine(string path)
         {
             if (String.IsNullOrEmpty(path) || !File.Exists(path))
             {
@@ -29,7 +30,7 @@ namespace SumCalculator.Infrastructure.FilesReader
             }
         }
 
-        int[] INumbersDataReader.Read(string path)
+        public IEnumerable<long> Read(string path)
         {
             string[] array = ReadLine(path);
 

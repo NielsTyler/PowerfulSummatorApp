@@ -1,7 +1,9 @@
-﻿namespace SumCalculator.Application.Interfaces
+﻿using System.Collections.Generic;
+
+namespace SumCalculator.Application.Interfaces
 {
     public interface IIntSumCalculator
     {
-        int Sum(int[] array);
+        long Sum(IEnumerable<long> array);
     }
 }

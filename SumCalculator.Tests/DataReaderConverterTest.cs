@@ -21,7 +21,7 @@ namespace SumCalculator.Tests
             ArraysConverter converter = new ArraysConverter(logger);            
             var result = converter.ConvertWithFiltering(data);
 
-            Assert.Equal(new int[] { 10, 3 }, result);
+            Assert.Equal(new long[] { 10, 3 }, result);
         }
 
         [Fact]
@@ -31,8 +31,8 @@ namespace SumCalculator.Tests
             ILogger<ArraysConverter> logger = loggerMock.Object;
 
             var arraysConverter = new ArraysConverter(logger);
-            INumbersDataReader reader = new CsvFileReader(arraysConverter);
-            
+            INumbersDataReader reader = new CsvFileReader(arraysConverter);            
+
             String wrongPath = String.Empty;
 
             Assert.Throws<SumCalcAppException>(() => reader.Read(String.Empty));

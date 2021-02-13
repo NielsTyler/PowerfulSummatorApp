@@ -1,16 +1,31 @@
-﻿using SumCalculator.Application.Interfaces;
+﻿using SumCalculator.Application.Exceptions;
+using SumCalculator.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace SumCalculator.Application.SumAlgorighms
 {
     public class BasicIntSumCalculator : IIntSumCalculator
     {        
-        public int Sum(int[] array)
+        public long Sum(IEnumerable<long> array)
         {
-            return array.Sum();
+            if (array == null)
+            {
+                throw new SumCalcAppException("Data can not be empty.");  
+            }
+
+            try
+            {
+                checked
+                {
+                    return array.Sum();
+                }
+            }
+            catch (OverflowException ex)
+            {
+                throw new SumCalcAppException("Too big numbers. Consider to remove us of them.", ex);
+            }
         }
     }
 }

@@ -21,13 +21,13 @@ namespace SumCalculator.Application
             _summator = summator;
         }
 
-        public int Run(string path)
+        public long Run(string path)
         {
             _logger.LogInformation("Starting application");
 
             try
             {
-                int[] data = _reader.Read(path);
+                IEnumerable<long> data = _reader.Read(path);
 
                 return _summator.Sum(data);
             }

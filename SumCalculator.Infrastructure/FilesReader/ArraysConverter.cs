@@ -7,32 +7,27 @@ namespace SumCalculator.Infrastructure.FilesReader
 {
     public class ArraysConverter
     {
-        private readonly ILogger<ArraysConverter> _logger;
-        private const string ERROR_ITEM_NOT_NUMERIC = "/“{0}/” is not number and was ignored.";
+        readonly ILogger<ArraysConverter> _logger;
+        const string ERROR_ITEM_NOT_NUMERIC = "/“{0}/” is not number and was ignored.";
 
         public ArraysConverter(ILogger<ArraysConverter> logger)
         {
             _logger = logger;
         }
 
-        public int[] ConvertWithFiltering(string[] strArray)
-        {
-            List<int> numbers = new List<int>();            
-
+        public IEnumerable<long> ConvertWithFiltering(string[] strArray)
+        {          
             foreach (string str in strArray)
-            {
-                int res;
-                if (int.TryParse(str, out res))
+            {                
+                if (long.TryParse(str, out var res))
                 {
-                    numbers.Add(res);
+                    yield return res;
                 }
                 else
                 {
                     _logger.LogInformation(String.Format(ERROR_ITEM_NOT_NUMERIC, str));
                 }
             }
-
-            return numbers.ToArray();
         }                          
     }
 }

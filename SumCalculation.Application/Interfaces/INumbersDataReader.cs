@@ -8,6 +8,6 @@ namespace SumCalculator.Application.Interfaces
 {
     public interface INumbersDataReader
     {
-        int[] Read(string path);
+        IEnumerable<long> Read(string path);
     }
 }

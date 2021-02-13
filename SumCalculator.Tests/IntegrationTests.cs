@@ -28,7 +28,7 @@ namespace SumCalculator.Tests
             var app = new SumCalculatorApp(summator, mockReader.Object, new Mock<ILogger<SumCalculatorApp>>().Object);
 
             //Act
-            int result = app.Run(It.IsAny<string>());
+            long result = app.Run(It.IsAny<string>());
 
             //Assert
             Assert.Equal(42, result);
