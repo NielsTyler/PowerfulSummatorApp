@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using SumCalculator.Application.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +17,12 @@ namespace SumCalculator.Infrastructure.FilesReader
         }
 
         public IEnumerable<long> ConvertWithFiltering(string[] strArray)
-        {          
+        {
+            if (strArray is null)
+            {
+                throw new SumCalcAppException("Can not convert null.");
+            } 
+
             foreach (string str in strArray)
             {                
                 if (long.TryParse(str, out var res))

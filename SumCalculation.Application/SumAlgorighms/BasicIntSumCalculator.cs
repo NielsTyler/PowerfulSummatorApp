@@ -10,7 +10,7 @@ namespace SumCalculator.Application.SumAlgorighms
     {        
         public long Sum(IEnumerable<long> array)
         {
-            if (array == null)
+            if (array is null)
             {
                 throw new SumCalcAppException("Data can not be empty.");  
             }
